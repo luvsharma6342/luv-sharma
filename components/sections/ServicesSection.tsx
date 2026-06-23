@@ -8,38 +8,35 @@ import Button from "@/components/ui/Button";
 const services = [
   {
     icon: Bot,
-    title: "Custom AI Voice Agent Development",
-    description: "Intelligent, conversational AI voice bots designed to handle customer inquiries, qualify leads, and manage objection handling 24/7. These agents seamlessly extract critical data from natural conversations and automatically route it to your spreadsheets or CRM systems.",
-    pricing: "Starting from ₹40,000",
+    title: "24/7 AI Receptionist & Lead Generation System",
+    description: "A custom, conversational AI voice assistant that interacts naturally over the phone. Never lose revenue to missed calls again—the AI operates around the clock to answer queries, handle objections, qualify leads, and automatically sync critical client data directly into your CRM.",
+    pricing: "₹15,000 - ₹25,000+ / setup",
     color: "purple" as const,
+    image: "/images/service_ai_receptionist.png",
   },
   {
     icon: Code,
-    title: "Code Review & Bug Fixing",
-    description: "Comprehensive repository audits, rapid debugging, and architectural optimization for your existing projects. Identify and resolve critical errors, refactor inefficient codebases for scalability, and ensure your software runs smoothly before deployment.",
-    pricing: "Starting from ₹10,000",
+    title: "Software Rescue & System Optimization",
+    description: "Rapid diagnostic and repair services for underperforming or broken internal software and customer-facing apps. Stop losing sales to bugs—get on-demand technical expertise to quickly identify root causes and implement permanent, scalable fixes without hiring an expensive full-time team.",
+    pricing: "₹299 - ₹499 diagnostic fee",
     color: "cyan" as const,
-  },
-  {
-    icon: Cpu,
-    title: "Custom Feature Integration",
-    description: "End-to-end development and integration of complex new functionalities into your existing software infrastructure. Whether it is adding automated webhook triggers, third-party API connections, or secure administrative dashboards, the integration is tailored to your specific technical requirements.",
-    pricing: "Starting from ₹25,000",
-    color: "coral" as const,
+    image: "/images/service_software_rescue.png",
   },
   {
     icon: Zap,
-    title: "Business Workflow Automation",
-    description: "Custom scripts and automation pipelines designed to eliminate manual data entry and connect disconnected systems. Transform missed calls and disorganized lead data into a streamlined, automated funnel that captures, organizes, and notifies you instantly.",
-    pricing: "Starting from ₹20,000",
-    color: "purple" as const,
+    title: "Business Workflow & Automation Integrations",
+    description: "Custom backend pipelines that connect your disconnected business tools so they communicate autonomously. Reclaim hundreds of hours by eliminating manual, error-prone data entry and fully automating repetitive administrative tasks like lead syncing and platform updates.",
+    pricing: "₹2,000 - ₹5,000+ / workflow",
+    color: "coral" as const,
+    image: "/images/service_workflow_automation.png",
   },
   {
     icon: Eye,
-    title: "Machine Learning & Computer Vision Solutions",
-    description: "Advanced predictive modeling and data analysis leveraging deep learning frameworks. Development of specialized models, such as Convolutional Neural Networks (CNNs), for complex problem-solving in areas like medical imaging analysis and computer vision.",
-    pricing: "Starting from ₹50,000",
-    color: "cyan" as const,
+    title: "Predictive AI & Custom Data Models",
+    description: "Turn raw data into an unfair competitive advantage. By implementing advanced capabilities like automated image analysis or predictive trend forecasting, your business can make faster, smarter, data-driven decisions without relying on manual human analysis.",
+    pricing: "Custom quote from ₹8,000",
+    color: "purple" as const,
+    image: "/images/service_predictive_ai.png",
   },
 ];
 
@@ -71,38 +68,49 @@ export default function ServicesSection() {
               <Card
                 key={idx}
                 glowColor={service.color}
-                className={`flex flex-col justify-between ${idx === 4 ? "md:col-span-2" : ""}`}
+                className="flex flex-col justify-between overflow-hidden"
               >
                 <div className="space-y-6">
-                  {/* Icon */}
-                  <div
-                    className="h-12 w-12 rounded-2xl flex items-center justify-center border border-border-primary"
-                    style={{
-                      background: `rgba(255, 255, 255, 0.02)`,
-                    }}
-                  >
-                    <Icon
-                      className="h-6 w-6"
-                      style={{
-                        color:
-                          service.color === "cyan"
-                            ? "#00D4FF"
-                            : service.color === "purple"
-                            ? "#7B5EA7"
-                            : "#FF6B6B",
-                      }}
+                  {/* Service Image */}
+                  <div className="w-full aspect-video rounded-xl overflow-hidden bg-bg-secondary/40 border border-border-primary/40 relative">
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
 
-                  {/* Title & Description */}
-                  <div className="space-y-3">
-                    <h3 className="font-display text-2xl font-bold text-text-primary">
+                  <div className="flex items-start gap-4">
+                    {/* Icon */}
+                    <div
+                      className="h-12 w-12 rounded-2xl flex-shrink-0 flex items-center justify-center border border-border-primary"
+                      style={{
+                        background: `rgba(255, 255, 255, 0.02)`,
+                      }}
+                    >
+                      <Icon
+                        className="h-6 w-6"
+                        style={{
+                          color:
+                            service.color === "cyan"
+                              ? "#00D4FF"
+                              : service.color === "purple"
+                              ? "#7B5EA7"
+                              : "#FF6B6B",
+                        }}
+                      />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-display text-2xl font-bold text-text-primary leading-tight mt-1">
                       {service.title}
                     </h3>
-                    <p className="text-text-muted text-sm leading-relaxed">
-                      {service.description}
-                    </p>
                   </div>
+
+                  {/* Description */}
+                  <p className="text-text-muted text-sm leading-relaxed">
+                    {service.description}
+                  </p>
                 </div>
 
                 {/* Pricing CTA */}
@@ -110,9 +118,15 @@ export default function ServicesSection() {
                   <span className="font-mono text-xs font-bold text-text-muted">
                     {service.pricing}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-xs font-bold text-accent-2 transition-transform group-hover:translate-x-1 duration-300">
+                  <a 
+                    href="https://bookze.vercel.app/book/luv-services" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-accent-2 transition-colors hover:text-accent-1"
+                    data-cursor="pointer"
+                  >
                     Book Session <ArrowRight className="h-3.5 w-3.5" />
-                  </span>
+                  </a>
                 </div>
               </Card>
             );
@@ -136,7 +150,7 @@ export default function ServicesSection() {
             </p>
           </div>
           <div className="flex-shrink-0">
-            <Button href="/#contact" variant="accent" size="lg" cursorType="cta">
+            <Button href="https://bookze.vercel.app/book/luv-services" target="_blank" rel="noopener noreferrer" variant="accent" size="lg" cursorType="cta">
               Book a Session Now <ArrowRight className="h-4 w-4" />
             </Button>
           </div>

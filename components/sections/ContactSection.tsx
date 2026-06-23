@@ -12,7 +12,7 @@ export default function ContactSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const emailAddress = "luvsharma.dev@gmail.com";
+  const emailAddress = "luvsharma105@gmail.com";
 
   const handleCopyEmail = async () => {
     try {
@@ -51,7 +51,7 @@ export default function ContactSection() {
       if (response.ok) {
         setStatus("success");
         setFormState({ name: "", email: "", message: "" });
-        
+
         // Trigger canvas-confetti blast
         confetti({
           particleCount: 100,
@@ -73,7 +73,7 @@ export default function ContactSection() {
     <section id="contact" className="relative z-10 py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
+
           {/* Left Column: Direct info & Socials */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
@@ -108,11 +108,10 @@ export default function ContactSection() {
               </div>
               <button
                 onClick={handleCopyEmail}
-                className={`p-2 rounded-lg border transition-all duration-300 ${
-                  copied
+                className={`p-2 rounded-lg border transition-all duration-300 ${copied
                     ? "border-green-500/40 bg-green-500/10 text-green-400"
                     : "border-border-primary bg-bg-secondary hover:border-accent-2/40 text-text-muted hover:text-text-primary"
-                }`}
+                  }`}
                 title="Copy Email"
                 data-cursor="pointer"
               >
@@ -140,7 +139,7 @@ export default function ContactSection() {
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
             <div className="glass-panel p-8 rounded-3xl border border-border-primary/60 bg-bg-secondary/15 relative overflow-hidden">
-              
+
               {/* Form header blur orb */}
               <div
                 className="absolute top-0 right-0 h-40 w-40 opacity-10 filter blur-3xl pointer-events-none"
